@@ -1,0 +1,74 @@
+// @import "~@/style/theme.less";
+.pageStyleConfig {
+  :nth-child(2) {
+    > div {
+      > div {
+        > div {
+          padding: 0 24px;
+        }
+      }
+    }
+  }
+}
+.configRow {
+  margin-bottom: 36px;
+  .select {
+    float: right;
+    > div {
+      > div {
+        padding: 0!important;
+      }
+    }
+  }
+  .colorItem {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 4px;
+    transition: opacity .2s;
+    cursor: pointer;
+    vertical-align: top;
+    text-align: center;
+    line-height: 24px;
+    i {
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+  .colorItem:hover {
+    opacity: .7;
+  }
+  .colorItem:active {
+    opacity: .95;
+  }
+  .configRowItem {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 24px;
+    cursor: pointer;
+    position: relative;
+    i{
+      // color: @primary-color;
+      position: absolute;
+      bottom: 16px;
+      right: 10px;
+    }
+  }
+  label{
+    display: block;
+    clear: both;
+    margin-bottom: 16px;
+    button{
+      float: right;
+    }
+  }
+}
+.alert{
+  margin-top: 24px;
+  font-size: 14px;
+}
+.button{
+  width: 100%;
+  margin-bottom: 24px;
+}

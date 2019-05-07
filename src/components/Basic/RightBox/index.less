@@ -1,0 +1,48 @@
+.rightBox {
+  display: inline-block;
+  height: inherit;
+  > span {
+    display: inline-block;
+    height: inherit;
+    vertical-align: top;
+    padding: 0 8px;
+    transition: color .2s ease-out, opacity .1s ease-in;
+    line-height: inherit;
+    cursor: pointer;
+  }
+  .avaterWrap {
+    cursor: pointer;
+    .avater {
+      height: inherit;
+      line-height: inherit;
+      display: inline-block;
+      > div {
+        margin: 16px 12px 0 12px;
+        line-height: initial;
+        text-align: center;
+        line-height: 32px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #dedede;
+        color: #666;
+      }
+    }
+    > span {
+      display: inline-block;
+      padding-right: 6px;
+    }
+  }
+}
+.rightBoxMobile {
+  position: absolute;
+  right: 16px;
+  top: 0;
+}
+.menuItem {
+  display: inline-block;
+  width: 140px;
+}
+.dark {
+  color: #fff;
+}
