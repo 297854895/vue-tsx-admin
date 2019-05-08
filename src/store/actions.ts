@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import { ActionTree } from 'vuex'
-import defaultThemeColor from '@/style/defaultThemeColor'
+
 import themeColor from '@/config/themeColor'
+import defaultThemeColor from '@/style/defaultThemeColor'
 
 import {
   theme,
