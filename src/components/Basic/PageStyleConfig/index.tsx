@@ -50,16 +50,8 @@ export default class PageStyleConfig extends Vue {
     // 处理关闭设置drawer后，出现body宽度计算为 calc(100% -15px)的bug
     if (!this.visible) document.body.style.width = '100%'
   }
-  @Watch('themeColor', { immediate: true })
-  onThemeColorChange(newColor: string, oldColor: string | undefined) {
-    const currentColor: { key: string, color: string } = themeColorList.find((item: { key: string }) => item.key === newColor) || themeColorList[0]
-    // 系统初始化，当前颜色与系统默认颜色不一致
-    if (!oldColor && currentColor.color !== defaultThemeColor) {
-      return this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, currentColor.color, true, false)
-    }
-    if (oldColor && newColor !== oldColor) {
-      this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, currentColor.color, false, false)
-    }
+  protected mounted() {
+    this.setDefaultThemeColor(this.themeColor, true)
   }
   toggleTheme = (theme: string, currentTheme: theme) => () => {
     if (theme === currentTheme) return false
@@ -69,22 +61,21 @@ export default class PageStyleConfig extends Vue {
     if (navLayout === currentLayout) return
     this.toggleNavLayout(navLayout)
   }
+  // 切换到默认主题色
+  setDefaultThemeColor(themeColor: string, isInit: boolean) {
+    const currentColor: { key: string, color: string } = themeColorList.find((item: { key: string }) => item.key === themeColor) || themeColorList[0]
+    if (isInit ? currentColor.color !== defaultThemeColor : true) this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, true)
+  }
+  // 切换主题色
   async toggleColor(
     themeInfo: { color: string; key: string },
     locale: { buildStyle: string, buildSuccess: string, buildError: string },
-    themeColor: string,
-    noTip: boolean, // 是否需要展示编译提示
-    shouldSetVuex: boolean
+    noTip: boolean // 是否需要展示编译提示
   ) {
-    if (themeColor === themeInfo.key) return false
     const {
       $message,
       buildLessOption
     } = this
-    if (this.buildStyleMessage) {
-      this.buildStyleMessage()
-      this.buildStyleMessage = null
-    }
     if (!noTip) {
       this.buildStyleMessage = $message.loading(locale.buildStyle, 0)
     }
@@ -103,12 +94,12 @@ export default class PageStyleConfig extends Vue {
     if (res.sheets > 0) {
       if (!noTip) {
         // 编译成功
-        $message.success(locale.buildSuccess)
+        $message.success(locale.buildSuccess, 1)
       }
-      if (shouldSetVuex) this.toggleThemeColor(themeInfo)
+      this.toggleThemeColor(themeInfo)
     } else {
       // 编译失败
-      $message.success(locale.buildError)
+      $message.error(locale.buildError, 5)
       console.error(res)
     }
   }
@@ -169,7 +160,7 @@ export default class PageStyleConfig extends Vue {
             <Tooltip key={item.key}>
               <template slot="title">{locale[item.key]}</template>
               <div
-                onClick={() => this.toggleColor(item, locale, themeColor, false, true)}
+                onClick={() => this.toggleColor(item, locale, false)}
                 class={styles.colorItem}
                 style={{ background: item.color }}>
                 {

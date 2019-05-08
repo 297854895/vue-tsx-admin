@@ -11,7 +11,7 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-        args[0].title = 'vue-tab-router-admin'
+        args[0].title = 'vue-tsx-admin'
         args[0].template = './public/index.ejs'
         return args
       })

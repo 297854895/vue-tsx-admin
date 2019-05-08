@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import { ActionTree } from 'vuex'
+import defaultThemeColor from '@/style/defaultThemeColor'
+import themeColor from '@/config/themeColor'
 
 import {
   theme,
@@ -89,9 +91,12 @@ const actions: ActionTree<RootState, any> = {
     commit('TOGGLE_LOCAL_STORE', type)
   },
   // 清空所有本地数据
-  clearAllLocalStore({ commit }, payload: { vm: Vue, tabList: Array<tabItem>, routesInfoMap: routesInfoMap }) {
+  clearAllLocalStore({ commit }, payload: { vm: { setDefaultThemeColor: Function }, tabList: Array<tabItem>, routesInfoMap: routesInfoMap }) {
     // 默认系统数据
     commit('RESET_LOCAL_STORE')
+    // 还原系统默认主题色
+    const colorInfo: { key: string; color: string; } | undefined = themeColor.find(item => item.color === defaultThemeColor)
+    if (payload.vm.setDefaultThemeColor) payload.vm.setDefaultThemeColor(colorInfo, false)
     // 清空tab以及路由数据
     commit('CLEAR_TAB', payload.vm)
     if (payload.tabList && payload.tabList.length > 1) {
