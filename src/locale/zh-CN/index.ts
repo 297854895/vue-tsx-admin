@@ -35,7 +35,10 @@ export default {
     buildStyle: '正在编译主题色...',
     buildSuccess: '编译主题色成功',
     buildError: '编译主题色失败',
-    exist: '关闭'
+    exist: '关闭',
+    clearStore: '清除数据缓存',
+    clearStoreTitle: '警告',
+    clearStoreContent: '您正在清空所有本地数据，这将使得系统恢复到默认状态，是否继续？'
   },
   menu: {
     home: '首页',

@@ -99,12 +99,15 @@ ol {
   list-style: none;
 }
 
-/* .router-fade-enter-active {
-  transition: all .1s ease;
+.router-fade-enter-active {
+  transition: all .3s ease;
+  overflow: hidden!important;
 }
 .router-fade-leave-active {
-  transition: all .1s ease;
+  transition: all .3s cubic-bezier(1, .5, .8, 1);
+  overflow: hidden!important;
 }
-.router-fade-enter, .router-fade-leave-to {
-  transform: translateY(90deg);
-} */
+.router-fade-enter, .router-fade-leave {
+  transform: translateX(10px);
+  opacity: 0;
+}

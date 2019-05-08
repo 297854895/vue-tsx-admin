@@ -80,15 +80,26 @@ const actions: ActionTree<RootState, any> = {
     if (payload.tabList && payload.tabList.length > 1) {
       payload.tabList.forEach(item => {
         const { module } = payload.routesInfoMap[item.id]
-        if (module) {
-          module.forEach(moduleName => commit(`${moduleName}/CLEAR_STORE`))
-        }
+        if (module) module.forEach(moduleName => commit(`${moduleName}/CLEAR_STORE`))
       })
     }
   },
   // 切换本地数据持久化
   toogleLocalStore({ commit }, type: localStoreType) {
     commit('TOGGLE_LOCAL_STORE', type)
+  },
+  // 清空所有本地数据
+  clearAllLocalStore({ commit }, payload: { vm: Vue, tabList: Array<tabItem>, routesInfoMap: routesInfoMap }) {
+    // 默认系统数据
+    commit('RESET_LOCAL_STORE')
+    // 清空tab以及路由数据
+    commit('CLEAR_TAB', payload.vm)
+    if (payload.tabList && payload.tabList.length > 1) {
+      payload.tabList.forEach(item => {
+        const { module } = payload.routesInfoMap[item.id]
+        if (module) module.forEach(moduleName => commit(`${moduleName}/CLEAR_STORE`))
+      })
+    }
   }
 }
 

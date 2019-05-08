@@ -41,9 +41,7 @@ export default class App extends Vue {
   protected render() {
     return <LocaleProvider
       locale={this.lanMap[this.currentLocale]}>
-      <transition name="router-fade">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
     </LocaleProvider>
   }
 }

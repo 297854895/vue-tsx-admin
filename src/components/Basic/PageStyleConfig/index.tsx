@@ -1,8 +1,8 @@
-import { Drawer, Divider, Icon, Tooltip, Alert, Switch, Select, Button } from 'ant-design-vue'
+import { Drawer, Divider, Icon, Tooltip, Alert, Switch, Button, Modal } from 'ant-design-vue'
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { State, Action } from 'vuex-class'
 
-import { theme, languageType, navLayout, deviceType, tabMode } from '@/store/types'
+import { theme, languageType, navLayout, deviceType, tabMode, tabItem, routesInfoMap } from '@/store/types'
 import appendLessFile from '@/utils/appendLessFile'
 
 import themeColorList from '@/config/themeColor'
@@ -23,6 +23,8 @@ export default class PageStyleConfig extends Vue {
   @Prop(Function) close !: Function;
   @State(state => state.theme) theme !: theme;
   @State(state => state.tabTool) tabTool !: boolean;
+  @State(state => state.tabList) tabList !: Array<tabItem>;
+  @State(state => state.routesInfoMap) routesInfoMap !: routesInfoMap;
   @State(state => state.tabMode) tabMode !: tabMode;
   @State(state => state.themeColor) themeColor !: string;
   @State(state => state.navLayout) navLayout !: navLayout;
@@ -42,15 +44,21 @@ export default class PageStyleConfig extends Vue {
   @Action('toggleFixedHeader') toggleFixedHeader !: Function;
   @Action('toggleGlobalScroll') toggleGlobalScroll !: Function;
   @Action('toggleFixedLeftMenu') toggleFixedLeftMenu !: Function;
+  @Action('clearAllLocalStore') clearAllLocalStore !: Function;
   @Watch('visible', { immediate: true })
   configClose() {
     // 处理关闭设置drawer后，出现body宽度计算为 calc(100% -15px)的bug
     if (!this.visible) document.body.style.width = '100%'
   }
-  protected mounted() {
-    const currentColor: { key: string, color: string } = themeColorList.find((item: { key: string }) => item.key === this.themeColor) || themeColorList[0]
-    if (currentColor.color !== defaultThemeColor) {
-      this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, currentColor.color, true)
+  @Watch('themeColor', { immediate: true })
+  onThemeColorChange(newColor: string, oldColor: string | undefined) {
+    const currentColor: { key: string, color: string } = themeColorList.find((item: { key: string }) => item.key === newColor) || themeColorList[0]
+    // 系统初始化，当前颜色与系统默认颜色不一致
+    if (!oldColor && currentColor.color !== defaultThemeColor) {
+      return this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, currentColor.color, true, false)
+    }
+    if (oldColor && newColor !== oldColor) {
+      this.toggleColor(currentColor, this.$locale[this.currentLanguage].pageStyleConfig, currentColor.color, false, false)
     }
   }
   toggleTheme = (theme: string, currentTheme: theme) => () => {
@@ -65,7 +73,8 @@ export default class PageStyleConfig extends Vue {
     themeInfo: { color: string; key: string },
     locale: { buildStyle: string, buildSuccess: string, buildError: string },
     themeColor: string,
-    noTip: boolean
+    noTip: boolean, // 是否需要展示编译提示
+    shouldSetVuex: boolean
   ) {
     if (themeColor === themeInfo.key) return false
     const {
@@ -87,14 +96,16 @@ export default class PageStyleConfig extends Vue {
     const res = await lessJS.default.modifyVars({
       '@primary-color': themeInfo.color
     })
+    if (this.buildStyleMessage) {
+      this.buildStyleMessage()
+      this.buildStyleMessage = null
+    }
     if (res.sheets > 0) {
       if (!noTip) {
-        this.buildStyleMessage()
-        this.buildStyleMessage = null
         // 编译成功
         $message.success(locale.buildSuccess)
       }
-      this.toggleThemeColor(themeInfo)
+      if (shouldSetVuex) this.toggleThemeColor(themeInfo)
     } else {
       // 编译失败
       $message.success(locale.buildError)
@@ -102,6 +113,13 @@ export default class PageStyleConfig extends Vue {
     }
   }
   tabModeSelect = (mode: tabMode) => this.toggleTabMode(mode)
+  clearStore(locale: { [propsName: string]: any }) {
+    Modal.confirm({
+      title: locale.clearStoreTitle,
+      content: locale.clearStoreContent,
+      onOk: () => this.clearAllLocalStore({ vm: this, tabList: this.tabList, routesInfoMap: this.routesInfoMap })
+    })
+  }
   render() {
     const {
       theme,
@@ -151,7 +169,7 @@ export default class PageStyleConfig extends Vue {
             <Tooltip key={item.key}>
               <template slot="title">{locale[item.key]}</template>
               <div
-                onClick={() => this.toggleColor(item, locale, themeColor, false)}
+                onClick={() => this.toggleColor(item, locale, themeColor, false, true)}
                 class={styles.colorItem}
                 style={{ background: item.color }}>
                 {
@@ -256,6 +274,7 @@ export default class PageStyleConfig extends Vue {
         </label>
       </div>
       <Button onClick={this.close} class={styles.button} type="primary">{locale.exist}</Button>
+      <Button onClick={() => this.clearStore(locale)} type="danger" class={styles.closeButton}>{locale.clearStore}</Button>
     </Drawer>
   }
 }

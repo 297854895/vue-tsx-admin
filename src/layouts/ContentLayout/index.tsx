@@ -3,8 +3,8 @@ import { Component, Vue } from 'vue-property-decorator'
 @Component
 export default class ContentLayout extends Vue {
   render() {
-    return <div>
+    return <transition name="router-fade">
       <router-view></router-view>
-    </div>
+    </transition>
   }
 }

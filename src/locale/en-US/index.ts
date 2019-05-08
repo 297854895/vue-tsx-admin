@@ -35,7 +35,10 @@ export default {
     buildStyle: 'Compiling theme color...',
     buildSuccess: 'Compile the theme color successfully',
     buildError: 'Compile the theme color failed',
-    exist: 'Close'
+    exist: 'Close',
+    clearStore: 'Clear local store',
+    clearStoreTitle: 'Warning',
+    clearStoreContent: 'Are you sure delete cached data ? this will return the system to its default state'
   },
   menu: {
     home: 'Home',

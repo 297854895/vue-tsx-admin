@@ -50,8 +50,11 @@ export default class TabTool extends Vue {
   }
   // tab组件的新增修改绘制
   @Watch('tabList', { deep: true })
-  onTabListChange() {
+  onTabListChange(newList: Array<tabItem>) {
     this.$nextTick(() => this.calculateTab())
+    if (newList.length === 1) {
+      this.initTab()
+    }
   }
   // active tab更改绘制
   @Watch('tabActive')

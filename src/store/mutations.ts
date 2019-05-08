@@ -82,7 +82,6 @@ const mutations: MutationTree<RootState> = {
     state.tabList = newTabList
     state.tabHistory = [newTabList[0].keyPath]
     vm.$router.push(newTabList[0].keyPath)
-    if (vm.initTab && typeof vm.initTab === 'function') vm.initTab()
   },
   // 切换本地数据持久化
   TOGGLE_LOCAL_STORE(state, type: localStoreType) {
