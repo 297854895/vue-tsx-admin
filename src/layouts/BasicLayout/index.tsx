@@ -54,7 +54,7 @@ export default class BasicLayout extends Vue {
     _oldpath: any,
     next: Function
   ) {
-    if (!this.routesInfoMap[newpath.name].public) this.handleTab({
+    if (this.routesInfoMap[newpath.name] && !this.routesInfoMap[newpath.name].public) this.handleTab({
       id: newpath.name,
       keyPath: newpath.path
     })
