@@ -82,7 +82,7 @@ const actions: ActionTree<RootState, any> = {
     commit('CLEAR_TAB', payload.vm)
     if (payload.tabList && payload.tabList.length > 1) {
       payload.tabList.forEach(item => {
-        const { module } = payload.routesInfoMap[item.id]
+        const { module } = payload.routesInfoMap[item.id] || { module: false }
         if (module) module.forEach(moduleName => commit(`${moduleName}/CLEAR_STORE`))
       })
     }

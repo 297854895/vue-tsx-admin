@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Layout, Icon, Drawer } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
-import { siderMenu, deviceType, navLayout, tabMode } from '@/store/types'
+import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap } from '@/store/types'
 import { theme } from '@/store/types'
 
 import { SiderMenu, Logo, TabTool, RightBox, TabManager } from '@/components'
@@ -34,12 +34,14 @@ export default class BasicLayout extends Vue {
   @State('siderMenu') siderMenu: siderMenu;
   // 当前客户端类型
   @State('deviceType') deviceType: deviceType;
-  // 切换左侧menu的收折状态
-  @Action('toggleSiderMenuCollapsed') toggleSiderMenuCollapsed!: Function;
-  // 左侧menu展开二级菜单
-  @Action('openSiderSubMenu') openSiderSubMenu!: Function;
+  // 路由信息
+  @State('routesInfoMap') routesInfoMap: routesInfoMap;
   // 操作tab
   @Action('handleTab') handleTab!: Function;
+  // 左侧menu展开二级菜单
+  @Action('openSiderSubMenu') openSiderSubMenu!: Function;
+  // 切换左侧menu的收折状态
+  @Action('toggleSiderMenuCollapsed') toggleSiderMenuCollapsed!: Function;
   // 监听路由变化
   protected mounted() {
     this.$router.beforeEach(this.listenRouteChange)
@@ -52,7 +54,7 @@ export default class BasicLayout extends Vue {
     _oldpath: any,
     next: Function
   ) {
-    this.handleTab({
+    if (!this.routesInfoMap[newpath.name].public) this.handleTab({
       id: newpath.name,
       keyPath: newpath.path
     })

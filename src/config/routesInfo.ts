@@ -9,7 +9,8 @@ const parseRoutesToMap = (routes: Array<routeItem>, routesInfoMap: routesInfoMap
         parseRoutesToMap(route.children, routesInfoMap)
       } else {
         routesInfoMap[route.id] = {
-          module: route.module
+          module: route.module,
+          public: route.public || false
         }
       }
     })

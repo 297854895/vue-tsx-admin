@@ -38,7 +38,8 @@ export interface tabItem {
 
 export interface routesInfoMap {
   [propsName: string]: {
-    module?: Array<string>
+    module?: Array<string>,
+    public?: boolean;
   }
 }
 
