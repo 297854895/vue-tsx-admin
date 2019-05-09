@@ -114,8 +114,7 @@ class Login extends Vue {
           <Tabs.TabPane key="account" tab={locale.account}>
             <Form.Item>
               {
-                getFieldDecorator('username', { rules: [{ required: loginType === 'account', message: locale.accountError }] })
-                (
+                getFieldDecorator('username', { rules: [{ required: loginType === 'account', message: locale.accountError }] })(
                   <Input size="large" type="text" name="username" placeholder={locale.accountTip}>
                     <Icon slot="prefix" type="user" />
                   </Input>
@@ -124,8 +123,7 @@ class Login extends Vue {
             </Form.Item>
             <Form.Item>
               {
-                getFieldDecorator('password', { rules: [{ required: loginType === 'account', message: locale.passwordError  }] })
-                (
+                getFieldDecorator('password', { rules: [{ required: loginType === 'account', message: locale.passwordError  }] })(
                   <Input size="large" type="password" name="password" placeholder={locale.passwordTip}>
                     <Icon slot="prefix" type="lock" />
                   </Input>
@@ -136,8 +134,7 @@ class Login extends Vue {
           <Tabs.TabPane key="phone" tab={locale.phone}>
             <Form.Item>
               {
-                getFieldDecorator('phone', { rules: [{ required: loginType === 'phone', pattern: /^1[34578]\d{9}$/, message: locale.phoneError }], validateTrigger: 'change' })
-                (
+                getFieldDecorator('phone', { rules: [{ required: loginType === 'phone', pattern: /^1[34578]\d{9}$/, message: locale.phoneError }], validateTrigger: 'change' })(
                   <Input size="large" type="text" name="phone" placeholder={locale.phoneTip}>
                     <Icon slot="prefix" type="mobile" />
                   </Input>
@@ -148,8 +145,7 @@ class Login extends Vue {
               <Col class="gutter-row" span={16}>
                 <Form.Item>
                   {
-                    getFieldDecorator('captcha', { rules: [{ required: loginType === 'phone', message: locale.captchaError }], validateTrigger: 'blur' })
-                    (
+                    getFieldDecorator('captcha', { rules: [{ required: loginType === 'phone', message: locale.captchaError }], validateTrigger: 'blur' })(
                       <Input size="large" type="text" placeholder={locale.captcha} name="captcha">
                         <Icon slot="prefix" type="mail" />
                       </Input>
