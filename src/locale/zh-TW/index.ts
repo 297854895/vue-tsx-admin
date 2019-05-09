@@ -1,5 +1,25 @@
 export default {
   name: '繁體中文',
+  login: {
+    account: '賬號密碼登錄',
+    accountTip: '賬號:admin',
+    passwordTip: '密碼:admin',
+    phone: '手機號登錄',
+    login: '登錄',
+    register: '註冊',
+    forgotPassword: '忘記密碼',
+    accountError: '請輸入賬號',
+    passwordError: '請輸入密碼',
+    phoneError: '請輸入手機號',
+    captchaError: '請輸入驗證碼',
+    captcha: '驗證碼:000000',
+    getCaptcha: '獲取驗證碼',
+    phoneTip: '手機號',
+    saveAccount: '記住密碼',
+    accountLoginError: '用戶或密碼錯誤',
+    phoneLoginError: '手機號或驗證碼錯誤',
+    logoutError: '退出登錄失敗'
+  },
   pageStyleConfig: {
     globalStyleText: '整體風格',
     darkTheme: '暗色風格',

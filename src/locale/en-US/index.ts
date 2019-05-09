@@ -1,5 +1,25 @@
 export default {
   name: 'English',
+  login: {
+    account: 'Account',
+    accountTip: 'account:admin',
+    passwordTip: 'password:admin',
+    phone: 'Phone',
+    login: 'Login',
+    register: 'Register',
+    forgotPassword: 'Forgot Password',
+    accountError: 'please input your account!',
+    passwordError: 'please input your password!',
+    phoneError: 'please input your phone number!',
+    captchaError: 'please input your account!',
+    captcha: 'captcha:000000',
+    getCaptcha: 'Captcha',
+    phoneTip: 'phone number',
+    saveAccount: 'Remember Me',
+    accountLoginError: 'Invalid username or password',
+    phoneLoginError: 'Invalid phone or captcha',
+    logoutError: 'Logout failed'
+  },
   pageStyleConfig: {
     globalStyleText: 'Page Style Setting',
     darkTheme: 'Dark Style',

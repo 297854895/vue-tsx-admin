@@ -49,6 +49,10 @@ export interface siderMenu {
   open: []
 }
 
+export interface loginInfo {
+  [propsName: string]: any;
+}
+
 export type localStoreType = 'systemLocalStore' | 'routerLocalStore'
 
 export type deviceType = 'desktop' | 'mobile' | 'tablet';
@@ -77,5 +81,6 @@ export interface RootState {
   fixedLeftMenu: boolean;
   systemLocalStore: boolean;
   routerLocalStore: boolean;
-  routesInfoMap: routesInfoMap
+  routesInfoMap: routesInfoMap;
+  loginInfo: loginInfo;
 }

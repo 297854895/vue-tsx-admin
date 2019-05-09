@@ -1,5 +1,25 @@
 export default {
   name: '简体中文',
+  login: {
+    account: '账号密码登录',
+    accountTip: '账号:admin',
+    passwordTip: '密码:admin',
+    phone: '手机号登录',
+    login: '登录',
+    register: '注册',
+    forgotPassword: '忘记密码',
+    accountError: '请输入账号',
+    passwordError: '请输入密码',
+    phoneError: '请输入手机号',
+    captchaError: '请输入验证码',
+    captcha: '验证码:000000',
+    getCaptcha: '获取验证码',
+    phoneTip: '手机号',
+    saveAccount: '记住密码',
+    accountLoginError: '用户或密码错误',
+    phoneLoginError: '手机号或验证码错误',
+    logoutError: '退出登录失败'
+  },
   pageStyleConfig: {
     globalStyleText: '整体风格',
     darkTheme: '暗色风格',

@@ -15,6 +15,7 @@ const systemLocalStoreKey = [
   'tabHistory',
   'deviceType',
   'systemLocalStore',
-  'routerLocalStore'
+  'routerLocalStore',
+  'loginInfo'
 ]
 export default systemLocalStoreKey

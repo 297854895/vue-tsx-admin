@@ -13,13 +13,13 @@ export default class Logo extends Vue {
       ? <div class={`${styles.menuLogo} ${styles[this.theme]}`}>
         <a>
           <img src={logo} />
-          <h1 class={textClass}>Vue Tab Router</h1>
+          <h1 class={textClass}>Vue Tsx Admin</h1>
         </a>
       </div>
       : <div class={styles.topLogo}>
         <a>
           <img src={logo} />
-          <h1 class={textClass}>Vue Tab Router</h1>
+          <h1 class={textClass}>Vue Tsx Admin</h1>
         </a>
       </div>
     )

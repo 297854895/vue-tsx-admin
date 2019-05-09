@@ -106,6 +106,32 @@ const actions: ActionTree<RootState, any> = {
         if (module) module.forEach(moduleName => commit(`${moduleName}/CLEAR_STORE`))
       })
     }
+  },
+  // 登录
+  async login({ commit }, params) {
+    if (
+      params.username && (params.username !== 'admin'
+      || params.password !== 'admin')
+    ) return 'accountLoginError'
+    if (params.phone && params.captcha !== '000000') return 'phoneLoginError'
+    await new Promise(res => {
+      // 模拟网络请求
+      setTimeout(res, 2000)
+    })
+    commit('SET_LOGIN_INFO', {
+      nickname: 'Admin',
+      userid: '0932313'
+    })
+    return true
+  },
+  // 退出登录
+  async logout({ commit }) {
+    await new Promise(res => {
+      // 模拟网络请求
+      setTimeout(res, 500)
+    })
+    commit('LOGOUT')
+    return true
   }
 }
 

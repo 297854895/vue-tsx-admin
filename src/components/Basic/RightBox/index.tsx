@@ -3,7 +3,7 @@ import { Icon, Dropdown, Menu } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
 import PageStyleConfig from '../PageStyleConfig'
-import { language } from '@/store/types'
+import { language, loginInfo } from '@/store/types'
 import styles from './index.less'
 
 @Component
@@ -11,18 +11,33 @@ export default class RightBox extends Vue {
   @Prop(String) deviceType !: string;
   @Prop(Boolean) top !: boolean;
   @Prop(String) theme !: string;
+  // 当前语言信息
   @State(state => state.language) language !: language;
+  // 当前登录信息
+  @State(state => state.loginInfo) loginInfo!: loginInfo;
+  // 切换语言
   @Action('toggleLanguage') toggleLanguage : Function;
+  // 退出登录
+  @Action('logout') logout!: Function;
   private systemConfigVisible: boolean = false;
   changeLanguage = (key: string) => (): Function => this.toggleLanguage(key);
   toggleSystemConfigVisible(): void {
     this.systemConfigVisible = !this.systemConfigVisible
+  }
+  // 执行退出登录操作
+  async startLogout() {
+    const res = await this.logout()
+    if (!res) this.$message.error(this.$locale[this.language.current].login.logoutError)
+    this.$router.push({
+      name: 'login'
+    })
   }
   render () {
     const {
       top,
       theme,
       language,
+      loginInfo,
       deviceType
     } = this
     return <div class={`${styles.rightBox} ${deviceType !== 'desktop' ? styles.rightBoxMobile : ''} ${top ? styles[theme] : ''}`}>
@@ -33,10 +48,10 @@ export default class RightBox extends Vue {
               <Icon type="user" />
             </div>
           </div>
-          <span>Alex</span>
+          <span>{loginInfo.nickname}</span>
         </span>
         <Menu slot="overlay">
-          <Menu.Item>
+          <Menu.Item onClick={this.startLogout}>
             <Icon type="poweroff" />退出登录
           </Menu.Item>
         </Menu>

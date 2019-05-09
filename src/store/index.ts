@@ -90,7 +90,9 @@ const createState = (lan: languageType): RootState => ({
   // 功能页面数据持久化
   routerLocalStore: false,
   // 路由信息映射表
-  routesInfoMap: routesInfoMap
+  routesInfoMap: routesInfoMap,
+  // 用户信息
+  loginInfo: {}
 })
 
 export default new Vuex.Store({
@@ -100,7 +102,10 @@ export default new Vuex.Store({
     // 清空本地vuex-persistedstate
     RESET_LOCAL_STORE(state: { [propsName: string]: any }) {
       const initState: { [propsName: string]: any } = createState(defaultLanguage)
+      // 只遍历需要缓存key
       systemLocalStoreKey.forEach((key: string) => {
+        // 排除掉登录数据
+        if (key === 'loginInfo') return
         state[key] = initState[key]
       })
     },
@@ -116,6 +121,7 @@ export default new Vuex.Store({
         }
       }
       const localStore: { [propsName: string]: any } = {}
+      // 只遍历需要缓存key
       systemLocalStoreKey.forEach(key => {
         localStore[key] = root[key]
       })

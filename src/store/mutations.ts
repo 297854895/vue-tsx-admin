@@ -96,6 +96,14 @@ const mutations: MutationTree<RootState> = {
         localStore.clear()
       }
     }
+  },
+  // 设置登录信息
+  SET_LOGIN_INFO(state, info) {
+    state.loginInfo = info
+  },
+  // 退出登录
+  LOGOUT(state) {
+    state.loginInfo = {}
   }
 };
 
