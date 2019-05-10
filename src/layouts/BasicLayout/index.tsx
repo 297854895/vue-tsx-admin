@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Layout, Icon, Drawer } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
-import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap, loginInfo } from '@/store/types'
+import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap } from '@/store/types'
 import { theme } from '@/store/types'
 
 import { SiderMenu, Logo, TabTool, RightBox, TabManager } from '@/components'
@@ -37,21 +37,11 @@ export default class BasicLayout extends Vue {
   // 路由信息
   @State('routesInfoMap') routesInfoMap: routesInfoMap;
   // 登录信息
-  @State('loginInfo') loginInfo!: loginInfo;
-  // 操作tab
   @Action('handleTab') handleTab!: Function;
   // 左侧menu展开二级菜单
   @Action('openSiderSubMenu') openSiderSubMenu!: Function;
   // 切换左侧menu的收折状态
   @Action('toggleSiderMenuCollapsed') toggleSiderMenuCollapsed!: Function;
-  protected beforeMount() {
-    // 未登录
-    if (!this.loginInfo.userid) {
-      return this.$router.push({
-        name: 'login'
-      })
-    }
-  }
   // 监听路由变化
   protected mounted() {
     this.$router.beforeEach(this.listenRouteChange)

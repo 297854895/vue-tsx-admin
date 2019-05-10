@@ -53,6 +53,11 @@ export interface loginInfo {
   [propsName: string]: any;
 }
 
+export interface rememberLoginInfo{
+  account: string;
+  password: string;
+}
+
 export type localStoreType = 'systemLocalStore' | 'routerLocalStore'
 
 export type deviceType = 'desktop' | 'mobile' | 'tablet';
@@ -83,4 +88,6 @@ export interface RootState {
   routerLocalStore: boolean;
   routesInfoMap: routesInfoMap;
   loginInfo: loginInfo;
+  rememberMe: boolean;
+  rememberLoginInfo: rememberLoginInfo | null
 }

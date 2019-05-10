@@ -4,9 +4,11 @@ import { State, Action } from 'vuex-class'
 
 import { language } from '@/store/types'
 
-import logo from '@/assets/logo.svg'
 import styles from './index.less'
+import logo from '@/assets/logo.svg'
 import defaultHomeKey from '@/config/default.homeKey'
+
+import crypto from '@/utils/crypto'
 
 @Component({
   props: {
@@ -28,10 +30,31 @@ class Login extends Vue {
     loginBtn: false,
     smsSendBtn: false
   }
+  // 语言信息
   @State(state => state.language) language !: language;
+  // 是否记住密码
+  @State(state => state.rememberMe) rememberMeChecked!: boolean;
+  // 记住的用于登录信息
+  @State(state => state.rememberLoginInfo) rememberLoginInfo!: { account: string; password: string };
   // 切换语言
   @Action('toggleLanguage') toggleLanguage : Function;
+  @Action('toggleRmemberMe') toggleRmemberMe : Function;
   @Action('login') login !: Function;
+  protected mounted() {
+    if (this.rememberMe) {
+      let { account, password } = this.rememberLoginInfo || { account: '', password: '' }
+      if (!account || !password) return
+      try {
+        password = crypto.decrypt(password)
+        this.form.setFieldsValue({
+          username: account,
+          password
+        })
+      } catch(e) {
+        console.error(e)
+      }
+    }
+  }
   async handleSubmit(event: Event) {
     event.preventDefault()
     const { form: { validateFields }, loginType } = this
@@ -68,17 +91,25 @@ class Login extends Vue {
     // validateFields(['phone'], { force: true }, (err: any, values: any) => {
     // })
   }
+  rememberMe(e: { target: { checked: boolean } }) {
+    this.toggleRmemberMe(e.target.checked)
+    if (!e.target.checked) this.form.setFieldsValue({
+      username: '',
+      password: ''
+    })
+  }
   protected render() {
     const { getFieldDecorator } = this.form,
           {
             $locale,
+            language,
             loginType,
             btnLoading,
             getCaptcha,
             handleSubmit,
-            language,
             phoneLoginState,
-            toggleLoginType
+            toggleLoginType,
+            rememberMeChecked
           } = this,
           locale = $locale[language.current].login
     return <div class={styles.login}>
@@ -167,7 +198,13 @@ class Login extends Vue {
        </Tabs>
        <Form.Item>
          {
-           loginType === 'account' ? <Checkbox>{locale.saveAccount}</Checkbox> : null
+           loginType === 'account'
+           ? <Checkbox
+              checked={rememberMeChecked}
+              onChange={this.rememberMe}>
+                {locale.saveAccount}
+             </Checkbox>
+           : null
          }
          <a class={styles.loginFormForgot} href="">
            {locale.forgotPassword}

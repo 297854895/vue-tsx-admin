@@ -5,6 +5,7 @@ import localStore from '@/localStore'
 
 import createThemeColorCss from '@/utils/createThemeColorCss'
 import enableRouterLocalStore from '@/utils/enableRouterLocalStore'
+import validateLogin from '@/utils/validateLogin'
 
 import App from './App'
 import store from './store'
@@ -60,5 +61,7 @@ const initAPP = async () => {
   // 启动监听
   if (enableRouterCache) window._enableRouterLocalStore = enableRouterLocalStore(store)
 }
-
+// 初始化系统
 initAPP()
+// 未登录检测
+validateLogin(store, router)

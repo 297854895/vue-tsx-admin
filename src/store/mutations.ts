@@ -97,6 +97,18 @@ const mutations: MutationTree<RootState> = {
       }
     }
   },
+  // 切换是否记住密码
+  TOGGLE_REMREBER_ME(state, checked) {
+    state.rememberMe = checked
+    if (!state.rememberMe) {
+      // 清空记住的密码
+      state.rememberLoginInfo = null
+    }
+  },
+  //记住密码
+  REMEMBER_LOGIN_PARAMS(state, info) {
+    state.rememberLoginInfo = info
+  },
   // 设置登录信息
   SET_LOGIN_INFO(state, info) {
     state.loginInfo = info
@@ -104,6 +116,8 @@ const mutations: MutationTree<RootState> = {
   // 退出登录
   LOGOUT(state) {
     state.loginInfo = {}
+    state.siderMenu.open = []
+    state.siderMenu.collapsed = false
   }
 };
 

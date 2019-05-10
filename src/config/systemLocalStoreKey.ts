@@ -16,6 +16,8 @@ const systemLocalStoreKey = [
   'deviceType',
   'systemLocalStore',
   'routerLocalStore',
-  'loginInfo'
+  'loginInfo',
+  'rememberMe',
+  'rememberLoginInfo'
 ]
 export default systemLocalStoreKey

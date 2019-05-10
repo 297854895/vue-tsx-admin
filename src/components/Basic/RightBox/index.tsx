@@ -3,22 +3,28 @@ import { Icon, Dropdown, Menu } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
 import PageStyleConfig from '../PageStyleConfig'
-import { language, loginInfo } from '@/store/types'
+import { language, loginInfo, tabItem, routesInfoMap } from '@/store/types'
 import styles from './index.less'
 
 @Component
 export default class RightBox extends Vue {
-  @Prop(String) deviceType !: string;
-  @Prop(Boolean) top !: boolean;
-  @Prop(String) theme !: string;
+  @Prop(String) deviceType!: string;
+  @Prop(Boolean) top!: boolean;
+  @Prop(String) theme!: string;
   // 当前语言信息
-  @State(state => state.language) language !: language;
+  @State(state => state.language) language!: language;
   // 当前登录信息
   @State(state => state.loginInfo) loginInfo!: loginInfo;
+  // tab信息
+  @State(state => state.tabList) tabList!: Array<tabItem>;
+  // 路由信息
+  @State(state => state.routesInfoMap) routesInfoMap!: routesInfoMap;
   // 切换语言
-  @Action('toggleLanguage') toggleLanguage : Function;
+  @Action('toggleLanguage') toggleLanguage: Function;
   // 退出登录
   @Action('logout') logout!: Function;
+  // 清除所有tab
+  @Action('clearTab') clearTab!: Function
   private systemConfigVisible: boolean = false;
   changeLanguage = (key: string) => (): Function => this.toggleLanguage(key);
   toggleSystemConfigVisible(): void {
@@ -28,6 +34,12 @@ export default class RightBox extends Vue {
   async startLogout() {
     const res = await this.logout()
     if (!res) this.$message.error(this.$locale[this.language.current].login.logoutError)
+    // 清除tab数组
+    this.clearTab({
+      vm: this,
+      tabList: this.tabList,
+      routesInfoMap: this.routesInfoMap
+    })
     this.$router.push({
       name: 'login'
     })

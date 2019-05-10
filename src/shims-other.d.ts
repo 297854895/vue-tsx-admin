@@ -28,3 +28,7 @@ declare module 'ant-design-vue/lib/locale-provider/en_US' {
   const en_US: any;
   export default en_US;
 }
+declare module 'crypto-js' {
+  const CryptoJS: any;
+  export default CryptoJS;
+}
