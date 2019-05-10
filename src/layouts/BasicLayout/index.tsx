@@ -6,7 +6,6 @@ import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap } from '@/stor
 import { theme } from '@/store/types'
 
 import { SiderMenu, Logo, TabTool, RightBox, TabManager } from '@/components'
-import { ContentLayout } from '@/layouts'
 
 import styles from './index.less'
 
@@ -193,7 +192,9 @@ export default class BasicLayout extends Vue {
               menuCollapsed={collapsed}
               deviceType={deviceType} /> : null
           }
-          <ContentLayout />
+          <transition name="router-fade">
+            <router-view></router-view>
+          </transition>
         </Content>
       </Layout>
     </Layout>

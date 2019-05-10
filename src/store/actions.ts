@@ -125,7 +125,7 @@ const actions: ActionTree<RootState, any> = {
       setTimeout(res, 2000)
     })
     store.commit('SET_LOGIN_INFO', {
-      nickname: 'Admin',
+      nickname: '天隙流光',
       token: '0932313'
     })
     // 密码加密后缓存到本地

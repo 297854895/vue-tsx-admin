@@ -1,0 +1,63 @@
+@media screen and (max-width: 965px) {
+  .extraContent{
+    margin-left: 0px!important;
+    width: 100%!important;
+    text-align: left!important;
+  }
+}
+.home {
+  .header {
+    background: #fff;
+    padding: 48px 32px 16px 32px;
+    .headerInfo{
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      .userInfo{
+        flex: auto;
+        display: flex;
+        margin-bottom: 12px;
+        .avatar{
+          width: 72px;
+          height: 72px;
+        }
+        .des{
+          flex: 1;
+          margin-left: 24px;
+          padding-top: 10px;
+          color: rgba(0,0,0,.45);
+        }
+      }
+      .extraContent{
+        flex: 0 1 auto;;
+        min-width: 250px;
+        margin-left: 88px;
+        text-align: right;
+        .number{
+          position: relative;
+          p {
+            color: rgba(0,0,0,.45);
+          }
+          div {
+            font-size: 24px;
+            color: #000;
+            span{
+              font-size: 18px;
+              color: rgba(0,0,0,.45);
+            }
+          }
+        }
+        .number:after{
+          content: ' ';
+          display: block;
+          height: 100%;
+          width: 1px;
+          background: #000;
+        }
+      }
+    }
+  }
+  .content{
+    padding: 24px;
+  }
+}
