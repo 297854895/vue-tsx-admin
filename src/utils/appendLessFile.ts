@@ -1,3 +1,4 @@
+// 添加主题色热编译的less文件
 export default () => {
   if (document.getElementById('lessColorFile')) return
   // 加载 less
