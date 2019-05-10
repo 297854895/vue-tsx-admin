@@ -101,11 +101,15 @@
   flex-direction: column;
   > div:nth-child(2) {
     flex: 1;
-    display: flex;
-    > div:last-child {
-      flex: 1;
+    >:last-child {
+      height: 100%;
       overflow: auto;
     }
+  }
+}
+.topNavOwnerScroll {
+  >:last-child {
+    height: calc(~"100% - 54px")!important;
   }
 }
 .contentTopNav{

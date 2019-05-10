@@ -177,6 +177,7 @@ export default class BasicLayout extends Vue {
           class={
             `${navLayout === 'top' && deviceType === 'desktop' ? styles.contentTopNav : ''}
             ${fixedHeader && globalScroll ? styles.paddingTopHeader : ''}
+            ${navLayout === 'top' && fixedHeader ? styles.topNavOwnerScroll : ''}
             `
           }>
           {

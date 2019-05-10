@@ -79,7 +79,7 @@ export default class TabManager extends Vue {
             <button
               onClick={this.clsoe}
               class={`${styles.closeBt}`}>
-              <a><Icon type="close" /></a>
+              <a><Icon type="down" /></a>
             </button>
             <div class={styles.tabContainer}>
               <ul>

@@ -61,7 +61,6 @@ index.ejs  `网页入口模板`
     themeColor.ts  `主题色列表`    
   + layouts  `布局`
     - BasicLayout  `系统基础布局(成功登录后)`  
-    - ContentLayout  `系统路由布局容器`  
     - RouterLayout  `系统多级路由容器`  
     index.ts  `抛出所有layouts`    
   + locale  `语言国际化配置`
