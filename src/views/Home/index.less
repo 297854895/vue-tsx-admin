@@ -1,8 +1,23 @@
-@media screen and (max-width: 965px) {
+@media screen and (max-width: 1199px) {
   .extraContent{
     margin-left: 0px!important;
     width: 100%!important;
+    max-width: 360px!important;
     text-align: left!important;
+  }
+  .contentPadding{
+    width: 100%!important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .content{
+    margin: 24px 0!important;
+  }
+  .contentPadding{
+    padding: 0!important;
+  }
+  .programStatis{
+    width: 100%;
   }
 }
 .home {
@@ -30,7 +45,7 @@
       }
       .extraContent{
         flex: 0 1 auto;;
-        min-width: 250px;
+        min-width: 360px;
         margin-left: 88px;
         text-align: right;
         .number{
@@ -58,6 +73,58 @@
     }
   }
   .content{
-    padding: 24px;
+    margin: 24px 12px;
+    .contentPadding {
+      padding: 0 10px;
+    }
+    .contentMargin {
+      margin-bottom: 24px;
+    }
+  }
+}
+.card {
+  h5{
+    i{
+      font-size: 20px;
+      vertical-align: middle;
+    }
+  }
+  p{
+    color: rgba(0, 0, 0, .45);
+  }
+  p:nth-child(2) {
+    height: 36px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  p:last-child{
+    margin-bottom: 0;
+    font-size: 12px;
+    span{
+      float: right;
+    }
+  }
+}
+.moment{
+  width: 100%!important;
+  > span:nth-child(1) {
+    vertical-align: top;
+  }
+  > span:nth-child(2) {
+    display: inline-block;
+    width: calc(~"100% - 78px");
+    margin-left: 24px;
+    height: 48px;
+    color: #333;
+    span {
+      color: rgba(0, 0, 0, .45)!important;
+      margin-left: 24px;
+    }
+    > span:nth-child(2) {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+    }
   }
 }
