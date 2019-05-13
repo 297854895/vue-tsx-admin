@@ -1,5 +1,5 @@
 import { Row, Col, Avatar, Card, Icon, Tag } from 'ant-design-vue'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { State, namespace } from 'vuex-class'
 import G2 from '@antv/g2'
 
@@ -13,6 +13,7 @@ const homemodule = namespace('home')
 
 @Component
 export default class Home extends Vue {
+  chart: any = null;
   @State('loginInfo') loginInfo!: loginInfo;
   @homemodule.Action('getProgramStatis') getProgramStatis: Function;
   @homemodule.Action('getTeam') getTeam: Function;
@@ -24,8 +25,9 @@ export default class Home extends Vue {
     this.getProgramStatis()
     this.getMoment()
     this.getTeam()
-    // 初始化雷达图
-    this.initRadar()
+    this.$nextTick(() => {
+      this.$nextTick(() => this.initRadar())
+    })
   }
   initRadar() {
     const data = [
@@ -39,11 +41,12 @@ export default class Home extends Vue {
       container: (this.$refs.radar as HTMLDivElement),
       forceFit: true,
       height: 300,
-      padding: [20, 40, 90, 30]
+      padding: [20, 0, 90, 30]
     });
     chart.source(data)
     chart.interval().position('genre*sold').color('genre')
     chart.render()
+    this.chart = chart
   }
   protected render() {
     const {
@@ -148,6 +151,7 @@ export default class Home extends Vue {
               <Col
                 class={styles.contentMargin}>
                 <Card
+                  style={{ overflow: 'hidden' }}
                   title="指数">
                   <div ref="radar"></div>
                 </Card>

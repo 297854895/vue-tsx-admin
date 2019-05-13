@@ -9,7 +9,7 @@ import {
 const getProgramStatis = async () => {
   // axios.get('/xxxx')
   await new Promise(reslove => {
-    setTimeout(reslove, 2000)
+    setTimeout(reslove, 1500)
   })
   return programStatis
 }
@@ -18,7 +18,7 @@ const getProgramStatis = async () => {
 const getMoment = async () => {
   // axios.get('/xxx')
   await new Promise(reslove => {
-    setTimeout(reslove, 2000)
+    setTimeout(reslove, 1500)
   })
   return moment
 }
@@ -26,7 +26,7 @@ const getMoment = async () => {
 const getTeam = async () => {
   // axios.get('/xxx')
   await new Promise(reslove => {
-    setTimeout(reslove, 2000)
+    setTimeout(reslove, 1500)
   })
   return team
 }
