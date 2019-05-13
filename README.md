@@ -2,6 +2,10 @@
 ----
 基于`typescript`、`jsx`、`vue`、`ant-design-vue`的中后台模板
 
+![image](https://github.com/297854895/vue-tsx-admin/blob/master/home.png)
+
+![image](https://github.com/297854895/vue-tsx-admin/blob/master/login.png)
+
 下载与运行
 ----
 
