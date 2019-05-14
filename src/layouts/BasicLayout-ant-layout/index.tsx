@@ -1,5 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator'
-import { Icon, Drawer } from 'ant-design-vue'
+import { Layout, Icon, Drawer } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
 import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap } from '@/store/types'
@@ -9,6 +9,7 @@ import { SiderMenu, Logo, TabTool, RightBox, TabManager } from '@/components'
 
 import styles from './index.less'
 
+const { Content, Sider, Header } = Layout
 
 @Component
 export default class BasicLayout extends Vue {
@@ -85,38 +86,36 @@ export default class BasicLayout extends Vue {
       },
       fixedLeftMenu
     } = this
-    return <section
-      class={`${styles.basicLayout} ${ theme === 'dark' ? styles.dark : styles.light }`}>
+    return <Layout>
       {
         // 非mobile设备
         navLayout === 'left' || deviceType === 'mobile'
         ? (deviceType !== 'mobile'
-          ? (<aside
+          ? (<Sider
               id="s_siderMenu"
-              style={{ width: !collapsed ? '256px' : '80px' }}
-              class={`
-                ${fixedLeftMenu ? styles.fixedLeftMenu : ''}
-              `}>
-              <div>
-                <Logo type="menu" theme={theme} />
-                <div class={styles.leftMenuWrap}>
-                  <SiderMenu
-                    open={open}
-                    theme={theme}
-                    menu={menuTree}
-                    tabActive={tabActive}
-                    collapsed={collapsed}
-                    class={`${styles.siderMenu}`}
-                    openSiderSubMenu={this.openSiderSubMenu} />
-                </div>
+              theme={theme}
+              width="256"
+              class={`${theme === 'light' ? styles.siderMenuWrap : ''} ${fixedLeftMenu ? styles.fixedLeftMenu : ''}`}
+              trigger={null}
+              collapsible
+              collapsed={collapsed}>
+              <Logo type="menu" theme={theme} />
+              <div class={styles.leftMenuWrap}>
+                <SiderMenu
+                  open={open}
+                  theme={theme}
+                  menu={menuTree}
+                  tabActive={tabActive}
+                  class={styles.siderMenu}
+                  openSiderSubMenu={this.openSiderSubMenu} />
               </div>
-            </aside>)
+            </Sider>)
           : <Drawer
               width="256"
               placement="left"
               closable={false}
               visible={!collapsed}
-              wrapClassName={styles[`${theme}Menu`]}
+              wrapClassName={styles[theme]}
               onClose={() => this.toggleSiderMenuCollapsed(deviceType)}>
               <Logo type="menu" theme={theme} />
               <SiderMenu
@@ -131,43 +130,32 @@ export default class BasicLayout extends Vue {
           </Drawer>
         ) : null
       }
-      <section class={`
-          ${styles.contentLayout}
-          ${fixedHeader && !globalScroll ? styles.notGlobalScroll : ''}
-        `}>
+      <Layout
+        class={ `${fixedHeader && !globalScroll ? styles.notGlobalScroll : ''}` }>
         {
           navLayout === 'left' || deviceType === 'mobile'
-          ? <header
-            style={
-              fixedHeader && globalScroll
-              ? { background: '#fff!important', width: `calc(100% - ${collapsed ? deviceType === 'mobile' ? 0 : 80 : 256}px)` }
-              : { background: '#fff!important' } }
-            class={`
-              ${styles[`${theme}Header`]}
-              ${fixedHeader && globalScroll ? styles.fixedHeader : ''}
-            `}>
+          ? <Header
+            style={ fixedHeader && globalScroll ? { width: `calc(100% - ${collapsed ? deviceType === 'mobile' ? 0 : 80 : 256}px)` } : {} }
+            class={`${styles.header} ${styles[theme+'Header']} ${fixedHeader && globalScroll ? styles.fixedHeader : ''}`}>
             <Icon
               title="切换"
               class={styles.trigger}
               type={deviceType === 'mobile' ? 'menu' : collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={() => this.toggleSiderMenuCollapsed(deviceType)} />
-              {
-                deviceType === 'desktop'
-                ? <TabTool
-                  deviceType={deviceType}
-                  mode={tabMode}
-                  navLayout={navLayout}
-                  show={tabTool} />
-                : null
-              }
+            {
+              deviceType === 'desktop'
+              ? <TabTool
+                deviceType={deviceType}
+                mode={tabMode}
+                navLayout={navLayout}
+                show={tabTool} />
+              : null
+            }
             <RightBox deviceType={deviceType} />
-          </header>
-          : <header
+          </Header>
+          : <Header
             style={ navLayout === 'top' && !globalScroll ? { position: 'relative' } : {} }
-            class={`
-              ${styles[`${theme}Header`]}
-              ${fixedHeader && globalScroll ? styles.fixedHeader : ''}
-            `}>
+            class={`${styles.header} ${theme === 'light' ? styles.lightHeader : ''} ${fixedHeader ? styles.fixedHeader : ''}`}>
             <Logo type="top" theme={theme} />
             <div class={styles.navTop}>
               <SiderMenu
@@ -183,14 +171,15 @@ export default class BasicLayout extends Vue {
               top
               theme={theme}
               deviceType={deviceType} />
-          </header>
+          </Header>
         }
-        <main
-          class={`
-            ${navLayout === 'top' && deviceType === 'desktop' ? styles.contentTopNav : ''}
+        <Content
+          class={
+            `${navLayout === 'top' && deviceType === 'desktop' ? styles.contentTopNav : ''}
             ${fixedHeader && globalScroll ? styles.paddingTopHeader : ''}
             ${navLayout === 'top' && fixedHeader ? styles.topNavOwnerScroll : ''}
-          `}>
+            `
+          }>
           {
             navLayout === 'top'
             && deviceType === 'desktop'
@@ -205,12 +194,10 @@ export default class BasicLayout extends Vue {
               deviceType={deviceType} /> : null
           }
           <transition name="router-fade">
-            <div>
-              <router-view></router-view>
-            </div>
+            <router-view></router-view>
           </transition>
-        </main>
-      </section>
-    </section>
+        </Content>
+      </Layout>
+    </Layout>
   }
 }

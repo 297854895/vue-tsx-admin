@@ -1,6 +1,85 @@
 @import "~@/style/theme.less";
 
+.basicLayout {
+  min-height: 100vh;
+  overflow: hidden;
+  flex-direction: row;
+  display: flex;
+  > aside {
+    transition: width .2s;
+    flex: none;
+    box-shadow: 2px 0 8px rgba(29, 35, 41, .05);
+  }
+  > section {
+    background: #f0f2f5;
+  }
+  .fixedLeftMenu {
+    > div {
+      display: flex;
+      position: fixed;
+      height: 100%;
+      width: inherit;
+      flex-direction: column;
+      .leftMenuWrap{
+        flex: 1;
+        width: 100%;
+        overflow-y: auto;
+      }
+    }
+  }
+  .contentLayout{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    .fixedHeader {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      transition: none!important;
+      overflow: hidden;
+    }
+    > header {
+      display: flex;
+      width: 100%;
+      z-index: 10;
+      height: 64px;
+      background: #fff;
+      padding: 0 16px 0 0;
+      transition: width .1s;
+      line-height: 64px;
+      box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+      z-index: 9;
+      .trigger {
+        font-size: 20px;
+        display: inline-block;
+        width: 64px;
+        line-height: 64px;
+        vertical-align: top;
+        transition: background-color .2s ease-out;
+        cursor: pointer;
+      }
+      .trigger:hover {
+        background: rgba(0, 0, 0, .1);
+      }
+      .trigger:active {
+        background: rgba(0, 0, 0, .2);
+      }
+    }
+    > main {
+      flex: 1;
+    }
+  }
+}
 .dark {
+  > aside {
+    background: #001529!important;
+  }
+  > section {
+    background: #f0f2f5;
+  }
+}
+.darkMenu{
   :nth-child(2) {
     > div {
       > div {
@@ -12,7 +91,7 @@
     }
   }
 }
-.light {
+.lightMenu {
   :nth-child(2) {
     > div {
       > div {
@@ -24,44 +103,28 @@
     }
   }
 }
-.header {
-  display: flex;
-  padding: 0 16px 0 0;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  transition: width .2s;
-  z-index: 10;
-  .trigger {
-    font-size: 20px;
-    display: inline-block;
-    width: 64px;
-    line-height: 64px;
-    vertical-align: top;
-    transition: background-color .2s ease-out;
-    cursor: pointer;
-  }
-  .trigger:hover {
-    background: rgba(0, 0, 0, .1);
-  }
-  .trigger:active {
-    background: rgba(0, 0, 0, .2);
-  }
-}
-.darkHeader, .lightHeader {
+.lightHeader {
   position: relative;
   background: #fff!important;
+}
+.darkHeader, {
+  position: relative;
+  background: #001529!important;
 }
 .mobileLogo {
   font-size: 20px;
 }
 .siderMenuWrap {
   border-right: 1px solid #e8e8e8!important;
-  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
-  ul {
-    width: calc(~"100% - 1px");
-  }
+  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.5);
 }
 .siderMenu {
   border-right: none!important;
+}
+.light {
+  .siderMenu {
+    width: calc(~"100% - 1px")!important;
+  }
 }
 .siderMenuTop {
   line-height: 64px!important;
@@ -74,37 +137,26 @@
 .leftMenuWrap{
   padding: 16px 0;
 }
-.fixedLeftMenu {
-  > div {
-    display: flex;
-    position: fixed;
-    height: 100%;
-    width: inherit;
-    flex-direction: column;
-    .leftMenuWrap{
-      flex: 1;
-      width: 100%;
-      overflow-y: auto;
-    }
+.light {
+  .leftMenuWrap {
+    border-right: 1px solid #e8e8e8;
   }
 }
-.fixedHeader {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  right: 0;
+.siderMenuTopDark {
+  width: 100%!important;
 }
 .notGlobalScroll {
   display: flex;
   flex: 1;
   height: 100vh;
+  width: inherit;
+  overflow-x: hidden;
   flex-direction: column;
-  > div:nth-child(2) {
+  > main {
     flex: 1;
-    >:last-child {
-      height: 100%;
-      overflow: auto;
-    }
+    height: 100%;
+    width: inherit;
+    overflow: auto;
   }
 }
 .topNavOwnerScroll {
@@ -114,7 +166,27 @@
 }
 .contentTopNav{
   flex-direction: column;
+  display: flex;
+  > div:nth-child(2) {
+    flex: 1;
+    overflow: auto;
+  }
 }
 .paddingTopHeader {
   padding-top: 64px;
+}
+
+.collapsedMenu{
+  position: relative;
+  width: 80px!important;
+  min-width: 80px!important;
+  max-width: 80px!important;
+  flex: 0 0 80px!important;
+}
+.unCollapsedMenu{
+  position: relative;
+  width: 256px!important;
+  min-width: 256px!important;
+  max-width: 256px!important;
+  flex: 0 0 256px!important;
 }

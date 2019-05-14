@@ -37,9 +37,7 @@ export default class TabTool extends Vue {
     if (status) {
       this.handleSiderEvent('remove')
       this.handleWindowEvent('remove')
-      this.$nextTick(() => this.$nextTick(() => {
-        this.autoOffset()
-      }))
+      this.$nextTick(() => this.autoOffset())
       this.handleSiderEvent('bind')
       this.handleWindowEvent('bind')
     } else {
@@ -63,9 +61,7 @@ export default class TabTool extends Vue {
     this.$nextTick(() => this.handleActiveNotShow(active))
   }
   protected mounted() {
-    this.$nextTick(() => this.$nextTick(() => {
-      this.autoOffset()
-    }))
+    this.$nextTick(() => this.autoOffset())
     this.handleSiderEvent('bind')
     this.handleWindowEvent('bind')
   }
@@ -194,14 +190,10 @@ export default class TabTool extends Vue {
   handleSiderEvent(type: string) {
     if (this.navLayout === 'top') return
     let SiderMenu = document.getElementById('s_siderMenu')
-    if (!SiderMenu) {
-      this.$nextTick(() => {
-        SiderMenu = document.getElementById('s_siderMenu')
-        if (!SiderMenu) return
-        if (type == 'bind') return bindEvent(SiderMenu, 'transitionend', this.listenSideMenuChange, false)
-        removeEvent(SiderMenu, 'transitionend', this.listenSideMenuChange, false)
-      })
-    }
+    SiderMenu = document.getElementById('s_siderMenu')
+    if (!SiderMenu) return
+    if (type == 'bind') return bindEvent(SiderMenu, 'transitionend', this.listenSideMenuChange, false)
+    removeEvent(SiderMenu, 'transitionend', this.listenSideMenuChange, false)
   }
   // 监听或取消监听
   handleWindowEvent(type: string) {

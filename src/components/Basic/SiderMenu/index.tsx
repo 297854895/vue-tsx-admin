@@ -14,6 +14,7 @@ export default class SiderMenu extends Vue {
   @Prop(Array) readonly menu!: Array<menuItem>;
   @Prop(Array) readonly open!: [];
   @Prop(Boolean) readonly top!: boolean;
+  @Prop(Boolean) readonly collapsed!: boolean;
   @Prop(String) readonly deviceType!: deviceType;
   @Prop(Function) readonly closeMenu!: Function;
   @Prop(Function) readonly openSiderSubMenu!: Function;
@@ -48,18 +49,33 @@ export default class SiderMenu extends Vue {
   }
   render () {
     const {
+      collapsed,
       tabActive,
       theme,
       menu,
       open,
       top
     } = this
-    return <Menu
+    return !top ? <Menu
+      inlineCollapsed={collapsed}
       onClick={this.opereateMenu}
       onOpenChange={this.openSiderSubMenu}
       openKeys={open}
       selectedKeys={[tabActive]}
-      mode={top ? 'horizontal' : 'inline'}
+      mode="inline"
+      theme={theme}>
+      {
+        menu && menu.length !== 0
+        ? this.createMenuItem(menu)
+        : null
+      }
+    </Menu>
+    : <Menu
+      onClick={this.opereateMenu}
+      onOpenChange={this.openSiderSubMenu}
+      openKeys={open}
+      selectedKeys={[tabActive]}
+      mode="horizontal"
       theme={theme}>
       {
         menu && menu.length !== 0

@@ -1,0 +1,120 @@
+@import "~@/style/theme.less";
+
+.dark {
+  :nth-child(2) {
+    > div {
+      > div {
+        background: #001529!important;
+        > div {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+.light {
+  :nth-child(2) {
+    > div {
+      > div {
+        background: #fff!important;
+        > div {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+.header {
+  display: flex;
+  padding: 0 16px 0 0;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  transition: width .2s;
+  z-index: 10;
+  .trigger {
+    font-size: 20px;
+    display: inline-block;
+    width: 64px;
+    line-height: 64px;
+    vertical-align: top;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+  }
+  .trigger:hover {
+    background: rgba(0, 0, 0, .1);
+  }
+  .trigger:active {
+    background: rgba(0, 0, 0, .2);
+  }
+}
+.darkHeader, .lightHeader {
+  position: relative;
+  background: #fff!important;
+}
+.mobileLogo {
+  font-size: 20px;
+}
+.siderMenuWrap {
+  border-right: 1px solid #e8e8e8!important;
+  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+  ul {
+    width: calc(~"100% - 1px");
+  }
+}
+.siderMenu {
+  border-right: none!important;
+}
+.siderMenuTop {
+  line-height: 64px!important;
+}
+.navTop {
+  flex: 1;
+  height: inherit;
+  overflow: hidden;
+}
+.leftMenuWrap{
+  padding: 16px 0;
+}
+.fixedLeftMenu {
+  > div {
+    display: flex;
+    position: fixed;
+    height: 100%;
+    width: inherit;
+    flex-direction: column;
+    .leftMenuWrap{
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+    }
+  }
+}
+.fixedHeader {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+}
+.notGlobalScroll {
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  flex-direction: column;
+  > div:nth-child(2) {
+    flex: 1;
+    >:last-child {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+}
+.topNavOwnerScroll {
+  >:last-child {
+    height: calc(~"100% - 54px")!important;
+  }
+}
+.contentTopNav{
+  flex-direction: column;
+}
+.paddingTopHeader {
+  padding-top: 64px;
+}
