@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Icon, Drawer } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
-import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap } from '@/store/types'
+import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap, menuItem } from '@/store/types'
 import { theme } from '@/store/types'
 
 import { SiderMenu, Logo, TabTool, RightBox, TabManager } from '@/components'
@@ -30,6 +30,8 @@ export default class BasicLayout extends Vue {
   @State('globalScroll') globalScroll: boolean;
   // 左侧siderMenu状态
   @State('siderMenu') siderMenu: siderMenu;
+  // 菜单的MenuTree
+  @State('menuTree') menuTree: Array<menuItem>;
   // 当前客户端类型
   @State('deviceType') deviceType: deviceType;
   // 路由信息
@@ -73,6 +75,7 @@ export default class BasicLayout extends Vue {
       theme,
       tabMode,
       tabTool,
+      menuTree,
       navLayout,
       tabActive,
       deviceType,
@@ -80,7 +83,6 @@ export default class BasicLayout extends Vue {
       globalScroll,
       siderMenu: {
         collapsed,
-        menuTree,
         open
       },
       fixedLeftMenu

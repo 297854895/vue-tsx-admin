@@ -39,6 +39,11 @@ const initAPP = async () => {
           store.commit(`${moduleName}/EXTENDS_LOCAL_STORE`, state)
         } catch (e) {
           console.error(e)
+          return new Vue({
+            router,
+            store,
+            render: h => h(App)
+          }).$mount('#root');
         }
         if (idx === len) {
           // 读取本地库完成

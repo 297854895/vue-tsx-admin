@@ -51,8 +51,8 @@ color.less  `动态主题色less文件`
 favicon.ico  `系统图标`  
 index.ejs  `网页入口模板`  
 + src
-  + assets `资源存放`
-  + components  `组件存放`
+  + assets `资源存放`  
+  + components  `组件存放`  
     - Basic  `系统基础组件`  
     index.ts `抛出所有组件`  
   + config  `系统配置`  
@@ -63,17 +63,17 @@ index.ejs  `网页入口模板`
     routesInfo.ts  `生成路由信息`  
     systemLocalStoreKey.ts  `系统基础组件需要缓存的数据key`  
     themeColor.ts  `主题色列表`    
-  + layouts  `布局`
+  + layouts  `布局`  
     - BasicLayout  `系统基础布局(成功登录后)`  
     - RouterLayout  `系统多级路由容器`  
     index.ts  `抛出所有layouts`    
-  + locale  `语言国际化配置`
+  + locale  `语言国际化配置`  
     - en-US  `english`  
     - zh-CN  `简体中文`  
     - zh-TW  `繁体中文`  
     default.ts  `初始化默认语言`  
     index.ts  `抛出所有语言`  
-  + localStore  `路由页面数据持久化`  
+  + localStore  `路由页面数据持久化`   
   + store  `vuex状态集中管理`  
     - models  `分模块管理状态`  
     actions.ts  `根级action`  
@@ -82,12 +82,12 @@ index.ejs  `网页入口模板`
     index.ts  `生成状态库`  
     muations  `根级mutaion`   
     types.ts  `该目录下用到的类型声明约定`         
-  + style  `样式`
+  + style  `样式`  
     defaultThemeColor.ts  `系统初始化时默认颜色`  
     index.css  `全局样式文件`  
     reset.css  `重置样式`  
     theme.less  `全局less变量定义`          
-  + utils  `工具方法`
+  + utils  `工具方法`  
     appendLessFile.ts  `添加主题色编译的color.less`  
     createGuid.ts  `创建不重复的guid`  
     createThemeColorCss.ts  `热编译主题色css`  
@@ -97,7 +97,7 @@ index.ejs  `网页入口模板`
     getClientHW.ts  `获取客户端宽度与高度`  
     getDeviceType.ts `获取客户端类型`  
     validateLogin.ts  `验证用户是否登录`            
-  + views  `视图容器`
+  + views  `视图容器`  
     - Login  `登录界面`  
   App.tsx  `vue渲染根节点`  
   main.ts  `主入口`  

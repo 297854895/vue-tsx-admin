@@ -66,10 +66,12 @@ const createState = (lan: languageType): RootState => ({
     current: lan,
     list: createLanguagelist(locale)
   },
+  // 菜单列表
+  menuTree: menuTree,
   // 菜单menu
   siderMenu: {
     collapsed: false,
-    menuTree,
+    // menuTree,
     open: []
   },
   // tab列表

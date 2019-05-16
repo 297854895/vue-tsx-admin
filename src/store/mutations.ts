@@ -1,6 +1,8 @@
 import { Vue } from 'vue-property-decorator'
 import { MutationTree  } from 'vuex'
 
+import createMenu from '@/config/menu'
+
 import { RootState, localStoreType } from './types'
 import defaultHomeKey from '@/config/default.homeKey'
 import enableRouterLocalStore from '@/utils/enableRouterLocalStore'
@@ -116,6 +118,7 @@ const mutations: MutationTree<RootState> = {
   // 退出登录
   LOGOUT(state) {
     state.loginInfo = {}
+    // state.siderMenu.menuTree = createMenu()
     state.siderMenu.open = []
     state.siderMenu.collapsed = false
   }

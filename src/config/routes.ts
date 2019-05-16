@@ -40,136 +40,116 @@ export default [
         component: () => import('@/views/Home')
       },
       {
-        id: 'testChild',
-        name: 'testChild',
-        path: 'testChild',
-        icon: 'setting',
+        id: 'form',
+        name: 'form',
+        path: 'form',
+        icon: 'form',
         component: RouterLayout,
         children: [
           {
-            id: 'testChild0',
-            name: 'testChild0',
-            icon: 'user',
-            path: 'testChild0',
-            module: ['app'],
-            component: () => import('@/views/About')
-          },
-          {
-            id: 'testChild1',
-            name: 'testChild1',
-            icon: 'user',
-            path: 'testChild1',
+            id: 'basicForm',
+            name: 'basicForm',
+            icon: 'build',
+            path: 'basicForm',
             component: () => import('@/views/Example')
           },
           {
-            id: 'testChild2',
-            name: 'testChild2',
-            icon: 'user',
-            path: 'testChild2',
+            id: 'stepForm',
+            name: 'stepForm',
+            icon: 'block',
+            path: 'stepForm',
             component: () => import('@/views/Example')
           },
           {
-            id: 'testChild3',
-            name: 'testChild3',
-            icon: 'user',
-            path: 'testChild3',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild4',
-            name: 'testChild4',
-            icon: 'user',
-            path: 'testChild4',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild5',
-            name: 'testChild5',
-            icon: 'user',
-            path: 'testChild5',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild6',
-            name: 'testChild6',
-            icon: 'user',
-            path: 'testChild6',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild11',
-            name: 'testChild11',
-            icon: 'user',
-            path: 'testChild11',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild21',
-            name: 'testChild21',
-            icon: 'user',
-            path: 'testChild21',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild31',
-            name: 'testChild31',
-            icon: 'user',
-            path: 'testChild31',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild41',
-            name: 'testChild41',
-            icon: 'user',
-            path: 'testChild41',
-            component: () => import('@/views/Example')
-          },
-          {
-            id: 'testChild51',
-            name: 'testChild51',
-            icon: 'user',
-            path: 'testChild51',
+            id: 'advancedForm',
+            name: 'advancedForm',
+            icon: 'sliders',
+            path: 'advancedForm',
             component: () => import('@/views/Example')
           }
         ]
       },
       {
-        id: 'subMenu2',
-        name: 'subMenu2',
-        path: 'subMenu2',
+        id: 'list',
+        name: 'list',
+        path: 'list',
+        icon: 'bars',
+        component: RouterLayout,
+        children: [
+          {
+            id: 'searchTable',
+            name: 'searchTable',
+            icon: 'table',
+            path: 'searchTable',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'basicList',
+            name: 'basicList',
+            icon: 'appstore',
+            path: 'basicList',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'cardList',
+            name: 'cardList',
+            icon: 'project',
+            path: 'cardList',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'searchList',
+            name: 'searchList',
+            icon: 'file-search',
+            path: 'searchList',
+            component: () => import('@/views/Example')
+          }
+        ]
+      },
+      {
+        id: 'profile',
+        name: 'profile',
+        path: 'profile',
+        icon: 'file',
+        component: RouterLayout,
+        children: [
+          {
+            id: 'basicProfile',
+            name: 'basicProfile',
+            icon: 'idcard',
+            path: 'basicProfile',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'advancedProfile',
+            name: 'advancedProfile',
+            icon: 'reconciliation',
+            path: 'advancedProfile',
+            component: () => import('@/views/Example')
+          },
+        ]
+      },
+      {
+        id: 'account',
+        name: 'account',
+        path: 'account',
         icon: 'user',
         component: RouterLayout,
         children: [
           {
-            id: 'testSubMenu0',
-            name: 'testSubMenu0',
-            icon: 'user',
-            path: 'testSubMenu0',
+            id: 'accountCenter',
+            name: 'accountCenter',
+            icon: 'solution',
+            path: 'accountCenter',
             component: () => import('@/views/Example')
           },
           {
-            id: 'subMenu333',
-            name: 'subMenu333',
-            path: 'subMenu333',
-            icon: 'user',
-            component: RouterLayout,
-            children: [
-              {
-                id: 'testSubMenu10',
-                name: 'testSubMenu10',
-                icon: 'user',
-                path: 'testSubMenu10',
-                component: () => import('@/views/Example')
-              },
-              {
-                id: 'testSubMenu11',
-                name: 'testSubMenu11',
-                icon: 'user',
-                path: 'testSubMenu11',
-                component: () => import('@/views/Example')
-              }
-            ]
-          }
+            id: 'accountSetting',
+            name: 'accountSetting',
+            icon: 'setting',
+            path: 'accountSetting',
+            component: () => import('@/views/Example')
+          },
         ]
       }
     ]

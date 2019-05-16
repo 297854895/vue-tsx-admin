@@ -45,7 +45,6 @@ export interface routesInfoMap {
 
 export interface siderMenu {
   collapsed: boolean;
-  menuTree: Array<menuItem>;
   open: []
 }
 
@@ -74,6 +73,7 @@ export interface RootState {
   themeColor: string;
   language: language;
   siderMenu: siderMenu;
+  menuTree: Array<menuItem>;
   fixedHeader: boolean;
   tabTool: boolean;
   tabMode: tabMode;
