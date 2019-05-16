@@ -206,11 +206,11 @@ export default class BasicLayout extends Vue {
               menuCollapsed={collapsed}
               deviceType={deviceType} /> : null
           }
-          <transition name="router-fade">
-            <div>
-              <router-view></router-view>
-            </div>
-          </transition>
+          <div>
+            <transition name="router-fade">
+                <router-view></router-view>
+            </transition>
+          </div>
         </main>
       </section>
     </section>

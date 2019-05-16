@@ -117,8 +117,9 @@ const mutations: MutationTree<RootState> = {
   },
   // 退出登录
   LOGOUT(state) {
+    // 清除登录数据
     state.loginInfo = {}
-    // state.siderMenu.menuTree = createMenu()
+    // 清除系统的收折状态
     state.siderMenu.open = []
     state.siderMenu.collapsed = false
   }

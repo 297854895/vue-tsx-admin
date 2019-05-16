@@ -120,6 +120,8 @@ export default new Vuex.Store({
   modules: modules,
   // vuex-persistedstate 系统rootState缓存方式
   plugins: [createPersistedState({
+    // 本地locastorage key 
+    key: 'vue-tsx-admin',
     reducer(root) {
       if (!root.systemLocalStore) {
         return {
