@@ -5,6 +5,8 @@ import crypto from '@/utils/crypto'
 import themeColor from '@/config/themeColor'
 import defaultThemeColor from '@/style/defaultThemeColor'
 
+import { loginApi } from '@/api'
+
 import {
   theme,
   tabMode,
@@ -114,20 +116,9 @@ const actions: ActionTree<RootState, any> = {
   },
   // 登录
   async login(store, params) {
-    if (
-      params.username && (params.username !== 'admin'
-      || params.password !== 'admin')
-    ) return 'accountLoginError'
-    if (params.phone && params.captcha !== '000000') return 'phoneLoginError'
-    /** 登录密码加密传输 **/
-    await new Promise(res => {
-      // 模拟网络请求
-      setTimeout(res, 2000)
-    })
-    store.commit('SET_LOGIN_INFO', {
-      nickname: '天隙流光',
-      token: '0932313'
-    })
+    const res = await loginApi.login(params)
+    if (typeof res === 'string') return res
+    store.commit('SET_LOGIN_INFO', res)
     // 密码加密后缓存到本地
     if (params.username && store.state.rememberMe) store.commit('REMEMBER_LOGIN_PARAMS', {
       account: params.username,
