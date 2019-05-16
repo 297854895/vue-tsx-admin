@@ -162,7 +162,7 @@ export default class Home extends Vue {
                   title="团队">
                   {
                     team
-                    ? team.map(item => <Card.Grid>
+                    ? team.map(item => <Card.Grid class={styles.teamCard}>
                       <Icon type={item.icon} />&nbsp;&nbsp;{item.team}
                     </Card.Grid>)
                     : <Card.Grid>loading</Card.Grid>
