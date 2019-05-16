@@ -20,6 +20,10 @@ declare module 'less/dist/less.min.js' {
   };
   export default lessJS.default;
 }
+declare module 'highlight.js' {
+  const hljs: any;
+  export default hljs;
+}
 declare module 'ant-design-vue/lib/locale-provider/zh_CN' {
   const zh_CN: any;
   export default zh_CN;

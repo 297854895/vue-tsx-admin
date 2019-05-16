@@ -206,7 +206,7 @@ export default class BasicLayout extends Vue {
               menuCollapsed={collapsed}
               deviceType={deviceType} /> : null
           }
-          <div>
+          <div style={{ height: 'inherit' }}>
             <transition name="router-fade">
                 <router-view></router-view>
             </transition>

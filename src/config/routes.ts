@@ -151,7 +151,38 @@ export default [
             component: () => import('@/views/Example')
           },
         ]
-      }
+      },
+      {
+        id: 'guide',
+        name: 'guide',
+        path: 'guide',
+        icon: 'read',
+        component: RouterLayout,
+        children: [
+          {
+            id: 'localStore',
+            name: 'localStore',
+            path: 'localStore',
+            icon: 'database',
+            component: RouterLayout,
+            children: [
+              {
+                id: 'systemLocalStore',
+                name: 'systemLocalStore',
+                path: 'systemLocalStore',
+                component: () => import('@/views/Guide/LocalStore/SystemLocalStore')
+              },
+              {
+                id: 'routerLocalStore',
+                name: 'routerLocalStore',
+                path: 'routerLocalStore',
+                module: ['routerStore'],
+                component: () => import('@/views/Guide/LocalStore/RouterLocalStore')
+              }
+            ]
+          },
+        ]
+      },
     ]
   },
 ]

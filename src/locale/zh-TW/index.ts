@@ -62,6 +62,10 @@ export default {
   },
   menu: {
     home: '首页',
+    guide: '開發引導',
+    localStore: '本地緩存',
+    systemLocalStore: '系統數據持久化',
+    routerLocalStore: '路由頁面數據持久化',
     form: '表單頁',
     basicForm: '基礎表單',
     stepForm: '分步表單',

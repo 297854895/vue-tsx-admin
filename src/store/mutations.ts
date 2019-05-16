@@ -1,7 +1,7 @@
 import { Vue } from 'vue-property-decorator'
 import { MutationTree  } from 'vuex'
 
-import createMenu from '@/config/menu'
+// import createMenu from '@/config/menu'
 
 import { RootState, localStoreType } from './types'
 import defaultHomeKey from '@/config/default.homeKey'

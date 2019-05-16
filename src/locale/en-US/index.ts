@@ -62,6 +62,10 @@ export default {
   },
   menu: {
     home: 'Home',
+    guide: 'Guide',
+    localStore: 'Cache',
+    systemLocalStore: 'System Cache',
+    routerLocalStore: 'Router Cache',
     form: 'Form',
     basicForm: 'Basic Form',
     stepForm: 'Step Form',

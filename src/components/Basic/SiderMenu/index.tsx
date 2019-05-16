@@ -27,7 +27,9 @@ export default class SiderMenu extends Vue {
       item.children && item.children.length > 0
       ? <SubMenu key={item.id}>
         <span slot="title">
-          <Icon type={item.icon} />
+          {
+            item.icon ? <Icon type={item.icon} /> : null
+          }
           <span>{$locale[currentLanguage].menu[item.id]}</span>
         </span>
         {
@@ -37,7 +39,9 @@ export default class SiderMenu extends Vue {
       : <Item
         title={$locale[currentLanguage].menu[item.id]}
         key={item.id}>
-        <Icon type={item.icon} />
+        {
+          item.icon ? <Icon type={item.icon} /> : null
+        }
         <span>{$locale[currentLanguage].menu[item.id]}</span>
       </Item>
     ))
