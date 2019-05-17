@@ -63,7 +63,7 @@ export default {
   menu: {
     home: '首页',
     guide: '开发引导',
-    localStore: '本地缓存',
+    localStore: '数据持久化',
     systemLocalStore: '系统数据持久化',
     routerLocalStore: '路由页面数据持久化',
     form: '表单页',
@@ -80,6 +80,16 @@ export default {
     advancedProfile: '高级详情',
     account: '个人页',
     accountCenter: '个人中心',
-    accountSetting: '个人设置'
+    accountSetting: '个人设置',
+    pageStyle: '整体风格',
+    themeColor: '主题色',
+    tabTool: 'Tab组件',
+    otherConfig: '其他设置',
+    authorization: '权限管理',
+    loginValidate: '登录验证',
+    routerList: '创建路由',
+    menuList: '创建菜单',
+    pageAuthorization: '权限细分',
+    pageLoading: '路由动画'
   }
 }

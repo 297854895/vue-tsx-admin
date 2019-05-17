@@ -1,8 +1,9 @@
 import routes from './routes'
 import { menuItem, routeItem } from '@/store/types'
+const routesArr = routes()
 
-const parseRoutes = (routes: Array<routeItem>) => {
-  return routes
+const parseRoutes = (routesArr: Array<routeItem>) => {
+  return routesArr
     .filter((item: routeItem) => !item.public || item.mutiTab)
     .map((item: routeItem) => {
       const menuItem: menuItem = {
@@ -18,4 +19,4 @@ const parseRoutes = (routes: Array<routeItem>) => {
   })
 }
 
-export default () => parseRoutes(routes[1].children as routeItem[])
+export default () => parseRoutes(routesArr[1].children as routeItem[])

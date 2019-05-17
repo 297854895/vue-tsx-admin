@@ -80,6 +80,16 @@ export default {
     advancedProfile: 'Advanced Profile',
     account: 'Account',
     accountCenter: 'Acount center',
-    accountSetting: 'Account setting'
+    accountSetting: 'Account setting',
+    pageStyle: 'Page Style',
+    themeColor: 'Theme Color',
+    tabTool: 'Tab Tool',
+    otherConfig: 'Other Config',
+    authorization: 'Authorization',
+    loginValidate: 'Login Validate',
+    routerList: 'Create Route',
+    menuList: 'Create Menu',
+    pageAuthorization: 'Page Authorization',
+    pageLoading: 'Router Loading'
   }
 }

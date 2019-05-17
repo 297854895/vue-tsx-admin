@@ -63,7 +63,7 @@ export default {
   menu: {
     home: '首页',
     guide: '開發引導',
-    localStore: '本地緩存',
+    localStore: '數據持久化',
     systemLocalStore: '系統數據持久化',
     routerLocalStore: '路由頁面數據持久化',
     form: '表單頁',
@@ -80,6 +80,16 @@ export default {
     advancedProfile: '高級詳情',
     account: '個人頁',
     accountCenter: '個人中心',
-    accountSetting: '個人設置'
+    accountSetting: '個人設置',
+    pageStyle: '整體風格',
+    themeColor: '主題色',
+    tabTool: 'Tab組件',
+    otherConfig: '其他設置',
+    authorization: '權限管理',
+    loginValidate: '登錄驗證',
+    routerList: '創建路由',
+    menuList: '粗行間菜單',
+    pageAuthorization: '權限細分',
+    pageLoading: '路由動畫'
   }
 }

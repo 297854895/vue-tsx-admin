@@ -1,5 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator'
-import { Icon, Drawer } from 'ant-design-vue'
+import { Icon, Drawer, Spin } from 'ant-design-vue'
 import { State, Action } from 'vuex-class'
 
 import { siderMenu, deviceType, navLayout, tabMode, routesInfoMap, menuItem } from '@/store/types'
@@ -206,7 +206,7 @@ export default class BasicLayout extends Vue {
               menuCollapsed={collapsed}
               deviceType={deviceType} /> : null
           }
-          <div style={{ height: 'inherit' }}>
+          <div style={{ height: 'inherit', overflowX: 'hidden' }}>
             <transition name="router-fade">
                 <router-view></router-view>
             </transition>

@@ -8,7 +8,7 @@ import enableRouterLocalStore from '@/utils/enableRouterLocalStore'
 import validateLogin from '@/utils/validateLogin'
 
 import App from './App'
-import store from './store'
+import store from '@/store'
 import router from './router'
 
 import locale from '@/locale'

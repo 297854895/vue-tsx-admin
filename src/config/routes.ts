@@ -1,5 +1,6 @@
 import { BasicLayout, RouterLayout } from '@/layouts'
 import defaultHomeKey from './default.homeKey'
+
 // router config
 // 此类型路由不支持自动生成至menu菜单
 // {
@@ -9,7 +10,7 @@ import defaultHomeKey from './default.homeKey'
 //   path: '/login',
 //   component: () => import('@/views/Login')
 // }
-export default [
+export default () => [
   // 公有路由
   {
     id: 'login',
@@ -156,9 +157,44 @@ export default [
         id: 'guide',
         name: 'guide',
         path: 'guide',
-        icon: 'read',
+        icon: 'compass',
         component: RouterLayout,
         children: [
+          {
+            id: 'themeColor',
+            name: 'themeColor',
+            path: 'themeColor',
+            icon: 'bg-colors',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'tabTool',
+            name: 'tabTool',
+            path: 'tabTool',
+            icon: 'tool',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'pageStyle',
+            name: 'pageStyle',
+            path: 'pageStyle',
+            icon: 'read',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'otherConfig',
+            name: 'otherConfig',
+            path: 'otherConfig',
+            icon: 'layout',
+            component: () => import('@/views/Example')
+          },
+          {
+            id: 'pageLoading',
+            name: 'pageLoading',
+            path: 'pageLoading',
+            icon: 'loading',
+            component: () => import('@/views/Example')
+          },
           {
             id: 'localStore',
             name: 'localStore',
@@ -181,6 +217,39 @@ export default [
               }
             ]
           },
+          {
+            id: 'authorization',
+            name: 'authorization',
+            path: 'authorization',
+            icon: 'lock',
+            component: RouterLayout,
+            children: [
+              {
+                id: 'loginValidate',
+                name: 'loginValidate',
+                path: 'loginValidate',
+                component: () => import('@/views/Example')
+              },
+              {
+                id: 'routerList',
+                name: 'routerList',
+                path: 'routerList',
+                component: () => import('@/views/Example')
+              },
+              {
+                id: 'menuList',
+                name: 'menuList',
+                path: 'menuList',
+                component: () => import('@/views/Example')
+              },
+              {
+                id: 'pageAuthorization',
+                name: 'pageAuthorization',
+                path: 'pageAuthorization',
+                component: () => import('@/views/Example')
+              },
+            ]
+          }
         ]
       },
     ]
