@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 
 import 'highlight.js/styles/ocean.css'
 
-import styles from './index.less'
+import styles from '../../guide.less'
 
 @Component
 export default class SystemLocalStore extends Vue {

@@ -193,7 +193,7 @@ export default () => [
             name: 'pageLoading',
             path: 'pageLoading',
             icon: 'loading',
-            component: () => import('@/views/Example')
+            component: () => import('@/views/Guide/RouterLoading')
           },
           {
             id: 'localStore',

@@ -5,7 +5,7 @@ import hljs from 'highlight.js'
 
 import 'highlight.js/styles/ocean.css'
 
-import styles from '../SystemLocalStore/index.less'
+import styles from '../../guide.less'
 
 const moduleStore = namespace('routerStore')
 
