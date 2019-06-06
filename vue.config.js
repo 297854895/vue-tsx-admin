@@ -53,5 +53,12 @@ module.exports = {
       .tap(() => ({
         javascriptEnabled: true
       }))
+
+    config
+      .module
+      .rule('worker')
+      .test(/\.worker\.ts$/)
+      .use('worker-loader')
+      .loader('worker-loader')
   }
 }

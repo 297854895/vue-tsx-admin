@@ -1,5 +1,15 @@
 module.exports = {
-  presets: ["@vue/app"],
+  presets: [
+    [
+      "@vue/app"
+    ],
+    [
+      "@babel/preset-env",
+      {
+        useBuiltIns: 'entry'
+      }
+    ]
+  ],
   // ant-design 按需加载
   plugins: [
     [
