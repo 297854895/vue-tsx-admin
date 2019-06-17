@@ -36,7 +36,8 @@ const initAPP = async () => {
     localStore.ready().then(() => {
       localStore.iterate((state, moduleName, idx) => {
         try {
-          store.commit(`${moduleName}/EXTENDS_LOCAL_STORE`, state)
+          // 修正不具备状态或者不需要持久化路由在开启路由持久化配置时，抛出异常的问题
+          if ((store as any)._mutations[`${moduleName}/EXTENDS_LOCAL_STORE`]) store.commit(`${moduleName}/EXTENDS_LOCAL_STORE`, state)
         } catch (e) {
           console.error(e)
           return new Vue({
