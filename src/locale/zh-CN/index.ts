@@ -2,8 +2,8 @@ export default {
   name: '简体中文',
   login: {
     account: '账号密码登录',
-    accountTip: '账号:admin',
-    passwordTip: '密码:admin',
+    accountTip: '账号:admin 或 test',
+    passwordTip: '密码:admin 或 test',
     phone: '手机号登录',
     login: '登录',
     register: '注册',

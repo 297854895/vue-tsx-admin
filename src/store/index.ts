@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 
-import createMenu from '@/config/menu'
 import routerInfo from '@/config/routesInfo'
 
 import { RootState, languageType, languageOption } from './types'
@@ -36,8 +35,6 @@ const createLanguagelist = (locale: { [propname : string ]: { name: string } }) 
 }
 // 获取设备宽度
 const clientHW = getClientHW()
-// 生成菜单
-const menuTree = createMenu()
 // 根据路由生成key-value模式的路由信息映射表
 // 主要用于关闭tab时，查询每个路由绑定的vuex的module名字
 const routesInfoMap = routerInfo()
@@ -67,7 +64,7 @@ const createState = (lan: languageType): RootState => ({
     list: createLanguagelist(locale)
   },
   // 菜单列表
-  menuTree: menuTree,
+  menuTree: [],
   // 菜单menu
   siderMenu: {
     collapsed: false,

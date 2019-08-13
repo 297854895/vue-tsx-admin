@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { ActionTree } from 'vuex'
 
 import crypto from '@/utils/crypto'
+import authList from '@/config/auth.config'
 import themeColor from '@/config/themeColor'
 import defaultThemeColor from '@/style/defaultThemeColor'
 
@@ -117,8 +118,11 @@ const actions: ActionTree<RootState, any> = {
   // 登录
   async login(store, params) {
     const res = await loginApi.login(params)
-    if (typeof res === 'string') return res
-    store.commit('SET_LOGIN_INFO', res)
+    if (typeof res === 'string' || !res) return res || '未查询到登录数据'
+    store.commit('SET_LOGIN_INFO', {
+      ...res,
+      auth: authList
+    })
     // 密码加密后缓存到本地
     if (params.username && store.state.rememberMe) store.commit('REMEMBER_LOGIN_PARAMS', {
       account: params.username,

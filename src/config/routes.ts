@@ -254,4 +254,11 @@ export default () => [
       },
     ]
   },
+  {
+    id: 'notfound',
+    name: 'notfound',
+    public: true,
+    path: '/*',
+    component: () => import('@/views/NotFound')
+  }
 ]

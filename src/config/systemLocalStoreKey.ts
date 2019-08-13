@@ -9,6 +9,7 @@ const systemLocalStoreKey = [
   'tabMode',
   'globalScroll',
   'language',
+  'menuTree',
   'siderMenu',
   'tabList',
   'tabActive',

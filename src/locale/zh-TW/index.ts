@@ -2,8 +2,8 @@ export default {
   name: '繁體中文',
   login: {
     account: '賬號密碼登錄',
-    accountTip: '賬號:admin',
-    passwordTip: '密碼:admin',
+    accountTip: '賬號:admin 或 test',
+    passwordTip: '密碼:admin 或 test',
     phone: '手機號登錄',
     login: '登錄',
     register: '註冊',

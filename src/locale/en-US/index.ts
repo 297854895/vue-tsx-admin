@@ -2,8 +2,8 @@ export default {
   name: 'English',
   login: {
     account: 'Account',
-    accountTip: 'account:admin',
-    passwordTip: 'password:admin',
+    accountTip: 'account:admin or test',
+    passwordTip: 'password:admin or test',
     phone: 'Phone',
     login: 'Login',
     register: 'Register',

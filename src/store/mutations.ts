@@ -1,7 +1,7 @@
 import { Vue } from 'vue-property-decorator'
 import { MutationTree  } from 'vuex'
 
-// import createMenu from '@/config/menu'
+import createMenu from '@/config/menu'
 
 import { RootState, localStoreType } from './types'
 import defaultHomeKey from '@/config/default.homeKey'
@@ -113,7 +113,15 @@ const mutations: MutationTree<RootState> = {
   },
   // 设置登录信息
   SET_LOGIN_INFO(state, info) {
-    state.loginInfo = info
+    // 根据权限=生成菜单
+    const authMap = (info.auth as { [x: string]: any })[info.username]
+    const menuTree = createMenu(authMap)
+    state.menuTree = menuTree
+    // 设置登录信息
+    state.loginInfo = {
+      ...info,
+      auth: authMap
+    }
   },
   // 退出登录
   LOGOUT(state) {

@@ -5,7 +5,7 @@ import localStore from '@/localStore'
 
 import createThemeColorCss from '@/utils/createThemeColorCss'
 import enableRouterLocalStore from '@/utils/enableRouterLocalStore'
-import validateLogin from '@/utils/validateLogin'
+import validateAuth from '@/utils/validateLogin'
 
 import App from './App'
 import store from '@/store'
@@ -69,5 +69,5 @@ const initAPP = async () => {
 }
 // 初始化系统
 initAPP()
-// 未登录检测
-validateLogin(store, router)
+// 未登录检测 权限检测
+validateAuth(store, router)

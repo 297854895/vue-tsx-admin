@@ -6,7 +6,7 @@ export default (
   router.beforeEach(
     (
       newpath: { [prospName: string]: any },
-      _oldpath: any,
+      _oldpath: { [prospName: string]: any },
       next: Function
     ) => {
       if (
@@ -16,6 +16,13 @@ export default (
         && !store.state.loginInfo.token
       ) return next({
         name: 'login'
+      })
+      // 自vuex取权限列表，对进入的路由进行权限验证,将未具有权限路由的请求跳转至404页面(可根据具体情况提示无权限)
+      const auth: Array<string> = store.state.loginInfo.auth || []
+      if (
+        newpath.name !== 'login'
+        && !auth.includes(newpath.name) && newpath.name !== 'notfound') return next({
+        name: 'notfound'
       })
       next()
     }
