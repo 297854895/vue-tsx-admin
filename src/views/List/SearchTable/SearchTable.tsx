@@ -64,7 +64,7 @@ export default class SearchTable extends Vue {
     await new Promise(reslove => {
       setTimeout(reslove, 1500)
     })
-    this.filter = this.data.filter((item: data) => {
+    this.filter = source.filter((item: data) => {
       let nameFlag = true
       if (!this.form.name || (this.form.name && item.name.indexOf(this.form.name) > -1)) {
         nameFlag = true
