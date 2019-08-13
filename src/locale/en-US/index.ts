@@ -91,5 +91,20 @@ export default {
     menuList: 'Create Menu',
     pageAuthorization: 'Page Authorization',
     pageLoading: 'Router Loading'
+  },
+  list: {
+    searchTable: {
+      name: 'Name',
+      gender: 'Gender',
+      age: 'Age',
+      inputName: 'Please enter a name',
+      inputAge: 'Please enter age',
+      inputGender: 'Please select gender',
+      not: 'Unlimited',
+      man: 'Male',
+      woman: 'Female',
+      reset: 'Reset',
+      search: 'Search'
+    }
   }
 }

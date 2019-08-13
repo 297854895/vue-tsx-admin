@@ -91,5 +91,12 @@ export default {
     menuList: '粗行間菜單',
     pageAuthorization: '權限細分',
     pageLoading: '路由動畫'
+  },
+  list: {
+    searchTable: {
+      name: '姓名',
+      gender: '性別',
+      age: '年齡'
+    }
   }
 }

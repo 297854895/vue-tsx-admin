@@ -91,5 +91,20 @@ export default {
     menuList: '创建菜单',
     pageAuthorization: '权限细分',
     pageLoading: '路由动画'
+  },
+  list: {
+    searchTable: {
+      name: '姓名',
+      gender: '性別',
+      age: '年齡',
+      inputName: '請輸入姓名',
+      inputAge: '請輸入年齡',
+      inputGender: '請選擇性別',
+      not: '不限',
+      man: '男',
+      woman: '女',
+      reset: '重置',
+      search: '搜索'
+    }
   }
 }

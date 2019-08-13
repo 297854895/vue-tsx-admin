@@ -82,7 +82,7 @@ export default () => [
             name: 'searchTable',
             icon: 'table',
             path: 'searchTable',
-            component: () => import('@/views/Example')
+            component: () => import('@/views/List/SearchTable')
           },
           {
             id: 'basicList',
