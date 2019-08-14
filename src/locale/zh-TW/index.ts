@@ -96,7 +96,15 @@ export default {
     searchTable: {
       name: '姓名',
       gender: '性別',
-      age: '年齡'
+      age: '年齡',
+      inputName: '請輸入姓名',
+      inputAge: '請輸入年齡',
+      inputGender: '請選擇性別',
+      not: '不限',
+      man: '男',
+      woman: '女',
+      reset: '重置',
+      search: '搜索'
     }
   }
 }
