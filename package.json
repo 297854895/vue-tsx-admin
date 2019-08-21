@@ -42,7 +42,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "less": "^3.0.4",
+    "less": "~3.9.0",
     "less-loader": "^4.1.0",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
